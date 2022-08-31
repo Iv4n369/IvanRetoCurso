@@ -1,0 +1,103 @@
+﻿@model IvanRetoCurso.Models.EmpleadoViewModel
+@{
+    ViewBag.Title = "Empleados";
+}
+
+<br />
+<h4>Catalogo de empleados</h4>
+<div class="row">
+    <div class="col-12" style="text-align:left">
+        <a href="~/Home/Agregar" class="btn btn-success">Agregar</a>
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Fecha de Creacion</td>
+                    <td>Nombre Completo</td>
+                    <td>RFC</td>
+                    <td>Email</td>
+                    <td>Telefono</td>
+                    <td>Eliminado</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.datos)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.CreationDate</td>
+                        <td>@item.Name @item.LastName</td>
+                        <td>@item.RCF</td>
+                        <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
+                        @if (item.IsDeleted)
+                        {
+                            <td><a><i class="glyphicon glyphicon-check"></i></a></td>
+                            <td>
+                                <a href="#" ><i class="glyphicon glyphicon-eye-open"></i></a>
+                                <a href="~/Home/Editar/@item.Id" ><i class="glyphicon glyphicon-pencil"></i></a>
+                                <a href="~/Home/Eliminar/@item.Id" ><i class="glyphicon glyphicon-ok-circle"></i></a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                            <td>
+                                <a href="#"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                <a href="~/Home/Editar/@item.Id" ><i class="glyphicon glyphicon-pencil"></i></a>
+                                <a href="~/Home/Eliminar/@item.Id" ><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>
+                        }
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Ventana modal 
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myModalLabel">Agregar Empleado</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!-- Ventana modal
+<div id="myModalEdit" class="modal fade myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myModalLabel">Editar Empleado</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    <div class="modal hide fade in" id="edit-person">
+                        <div id="edit-person-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+

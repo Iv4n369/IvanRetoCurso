@@ -1,0 +1,65 @@
+﻿@model IvanRetoCurso.Models.EmpleadoViewModel
+
+@{
+    //ViewBag.Title = "Agregar";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+<style>
+    .row {
+        margin-top: 1rem;
+    }
+</style>
+
+<h1>Agregar Empleado</h1>
+
+@using (Html.BeginForm("Guardar", "Home", FormMethod.Post))
+{
+<form>
+    <div class="row">
+        <div class="col-xs-6">
+            <label>* Nombre</label> <br />
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", style = "max-width:100%" })
+        </div>
+        <div class="col-xs-6">
+            <label>* Apellidos</label> <br />
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", style = "max-width:100%" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <label>* Fecha Nacimiento</label> <br />
+            @Html.TextBoxFor(m => m.Birthday, new { type = "date" })
+        </div>
+        <div class="col-xs-6">
+            <label>* RFC</label> <br />
+            @Html.TextBoxFor(m => m.RFC, new { @class = "form-control", style = "max-width:100%" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <label>* Email</label> <br />
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "max-width:100%" })
+        </div>
+        <div class="col-xs-6">
+            <label>* Numero Telefonico</label> <br />
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", style = "max-width:100%" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <label>* Puesto</label> <br />
+            @Html.DropDownList("PositionId", items, "Selecciona el puesto", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10" style="text-align:left">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+}
